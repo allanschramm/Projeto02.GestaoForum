@@ -18,7 +18,9 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
-    options.Password.RequiredLength
+    options.Password.RequiredLength = 8;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
 });
 
 builder.Services.AddControllersWithViews();
