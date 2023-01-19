@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Projeto02.GestaoForum.ViewModels.ForumComentariosVM>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdComentario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ForumId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescricaoForum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comentario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataComentario)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdComentario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ForumId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescricaoForum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comentario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataComentario)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Projeto02.GestaoForum.ViewModels.ForumComentariosVM>
+
+@{
+    ViewData["Title"] = "ListarPorForum";
+}
+
+<h1>Listar Comentários por Forum</h1>
+
+<p>
+    @using (Html.BeginForm("ListarPorForum", "Comentarios", FormMethod.Get))
+    {
+        <div class="mb-3">
+            @Html.Label("forum", "Escolha o Forum")
+            @Html.DropDownList(
+                "idForum", 
+                (SelectList)ViewBag.Foruns, 
+                "TODOS", 
+                new { @class = "form-select"})
+        </div>
+        <div class="mb-3">
+            <input type="submit" value="Buscar" class="btn btn-primary" />
+        </div>
+    }
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdComentario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ForumId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescricaoForum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comentario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataComentario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdComentario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ForumId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescricaoForum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comentario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataComentario)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

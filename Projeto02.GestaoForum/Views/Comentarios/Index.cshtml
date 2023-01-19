@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Comentários</h1>
+
+<ul>
+    <li>
+        <a asp-action="Incluir" asp-controller="Comentarios">Incluir novo comentário</a>
+    </li>
+    <li>
+        <a asp-action="ListarPorForum" asp-controller="Comentarios">Listar comentários por Forum</a>
+    </li>
+    <li>
+        <a asp-action="ListarPorForumAjax" asp-controller="Comentarios">Listar comentários por Forum - Ajax</a>
+    </li>
+</ul>
+
+@section Scripts{
+    <script>
+        $(document).ready(function(){
+            window.alert('Função jquery');
+        });
+    </script>
+}

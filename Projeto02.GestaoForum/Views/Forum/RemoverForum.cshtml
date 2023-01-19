@@ -1,0 +1,18 @@
+﻿@model Projeto02.GestaoForum.Models.Forum
+
+@{
+    ViewData["Title"] = "RemoverForum";
+}
+
+<h1>Confirmação</h1>
+
+<h3 class="text-danger">Tem certeza que deseja remover este forum?</h3>
+<div>
+    <h4>@Model.Descricao</h4>
+    
+    <form asp-action="RemoverForum">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Sim, remover" class="btn btn-danger" /> |
+        <a asp-action="ListarTodos">Não, voltar para a lista</a>
+    </form>
+</div>
