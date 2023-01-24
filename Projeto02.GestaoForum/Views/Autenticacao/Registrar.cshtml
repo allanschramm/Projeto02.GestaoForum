@@ -27,6 +27,13 @@
                 <span asp-validation-for="ConfirmaSenha" class="text-danger"></span>
             </div>
             <div class="mb-3">
+                <label class="control-label">Perfil</label>
+                <select asp-for="Perfil" class="form-select"
+                        asp-items="(SelectList)ViewBag.Roles">
+                    <option value="">NENHUM PERFIL</option>
+                </select>
+            </div>
+            <div class="mb-3">
                 <input type="submit" value="Incluir Usuario" class="btn btn-primary" />
             </div>
         </form>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Projeto02.GestaoForum.Models;
 
 namespace Projeto02.GestaoForum.Controllers
@@ -8,11 +9,15 @@ namespace Projeto02.GestaoForum.Controllers
     {
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
+        private readonly RoleManager<IdentityRole> roleManager;
 
-        public AutenticacaoController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AutenticacaoController(UserManager<IdentityUser> userManager,
+                                      SignInManager<IdentityUser> signInManager,
+                                      RoleManager<IdentityRole> roleManager)
         {
-            userManager = userManager;
+            this.userManager = userManager;
             this.signInManager = signInManager;
+            this.roleManager = roleManager;
         }
 
         public IActionResult Index()
@@ -23,6 +28,10 @@ namespace Projeto02.GestaoForum.Controllers
         [HttpGet]
         public IActionResult Registrar()
         {
+            var roles = roleManager.Roles.ToList();
+            var listaRoles = roles.Select(r => r.Name).ToList();
+            ViewBag.Roles = new SelectList(listaRoles);
+
             return View();
         }
 
@@ -42,6 +51,15 @@ namespace Projeto02.GestaoForum.Controllers
 
                 if (result.Succeeded)
                 {
+                    if (!string.IsNullOrEmpty(model.Perfil))
+                    {
+                        var appRole = await roleManager.FindByNameAsync(model.Perfil);
+                        if(appRole != null)
+                        {
+                            await userManager.AddToRoleAsync(user, model.Perfil);
+                        }
+                    }
+
                     await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
@@ -54,13 +72,14 @@ namespace Projeto02.GestaoForum.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Login(string ? returnUrl = null)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LogonViewModel model)
+        public async Task<IActionResult> Login(LogonViewModel model, string? returnUrl = null)
         {
             if (ModelState.IsValid)
             {
@@ -72,7 +91,8 @@ namespace Projeto02.GestaoForum.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    //return RedirectToAction("Index", "Home");
+                    return returnUrl == null ? Redirect("/Home/Index") : Redirect(returnUrl);
                 }
                 ModelState.AddModelError(string.Empty, "Usuário ou senha inválidos");
             }
@@ -86,5 +106,10 @@ namespace Projeto02.GestaoForum.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public IActionResult AcessDenied()
+        {
+            var erro = "Você não tem permissão para acessar este recurso!!";
+            return View("_Erro", new Exception(erro));
+        }
     }
 }

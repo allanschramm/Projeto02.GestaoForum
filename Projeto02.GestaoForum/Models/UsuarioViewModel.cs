@@ -16,5 +16,7 @@ namespace Projeto02.GestaoForum.Models
         [Display(Name = "Confirma Senha")]
         [Compare("Senha")]
         public string ConfirmaSenha { get; set; }
+
+        public string? Perfil { get; set; }
     }
 }

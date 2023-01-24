@@ -1,4 +1,5 @@
 ﻿@model Projeto02.GestaoForum.Models.LogonViewModel
+@inject SignInManager<IdentityUser> SignInManager
 
 @{
     ViewData["Title"] = "Login";
@@ -10,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Login">
+        <form asp-action="Login" asp-route-returnurl="@ViewBag.ReturnUrl">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="mb-3">
                 <label asp-for="Email" class="control-label"></label>

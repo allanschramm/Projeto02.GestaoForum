@@ -23,6 +23,14 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequireUppercase = false;
 });
 
+//personalizando o caminho do login, logout e acesso negado
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Autenticacao/Login";
+    options.LogoutPath = "/Autenticacao/Logout";
+    options.AccessDeniedPath = "Autenticacao/AcessDenied";
+});
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -34,6 +42,8 @@ var services = scope.ServiceProvider;
 var context = services.GetRequiredService<ForumContext>();
 DbInitializer.Initialize(context);
 
+// criando os perfis (roles)
+Utils.CreateRoles(services).Wait();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

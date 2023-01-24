@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Projeto02.GestaoForum.DataAccess;
 using Projeto02.GestaoForum.Models;
 
@@ -27,6 +28,7 @@ namespace Projeto02.GestaoForum.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult CadastroForum()
         {
             return View();
