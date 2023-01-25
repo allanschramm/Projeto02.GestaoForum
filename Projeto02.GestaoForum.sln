@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Projeto02.GestaoForum", "Projeto02.GestaoForum\Projeto02.GestaoForum.csproj", "{A25546C5-2F72-4808-AB67-5322E918F10C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projeto03.AcessoDados", "Projeto03.AcessoDados\Projeto03.AcessoDados.csproj", "{DF920118-6CAF-4038-962E-2C34A6AA2033}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Projeto03.AcessoDados", "Projeto03.AcessoDados\Projeto03.AcessoDados.csproj", "{DF920118-6CAF-4038-962E-2C34A6AA2033}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projeto04.ApiForum", "Projeto04.ApiForum\Projeto04.ApiForum.csproj", "{223126D8-389D-4E16-9B23-8439AF0E63AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DF920118-6CAF-4038-962E-2C34A6AA2033}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF920118-6CAF-4038-962E-2C34A6AA2033}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF920118-6CAF-4038-962E-2C34A6AA2033}.Release|Any CPU.Build.0 = Release|Any CPU
+		{223126D8-389D-4E16-9B23-8439AF0E63AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{223126D8-389D-4E16-9B23-8439AF0E63AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{223126D8-389D-4E16-9B23-8439AF0E63AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{223126D8-389D-4E16-9B23-8439AF0E63AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
