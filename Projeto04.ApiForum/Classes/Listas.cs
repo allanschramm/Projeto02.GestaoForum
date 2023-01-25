@@ -2,7 +2,7 @@
 {
     public class Listas
     {
-        public  IEnumerable<Curso> ListarCursos()
+        public static IEnumerable<Curso> ListarCursos()
         {
             return new List<Curso>
             {
