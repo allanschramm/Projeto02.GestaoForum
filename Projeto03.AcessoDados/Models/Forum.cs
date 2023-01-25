@@ -1,6 +1,5 @@
 ﻿using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Projeto03.AcessoDados.Models
 {
