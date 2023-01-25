@@ -1,5 +1,5 @@
 ﻿using Dapper.Contrib.Extensions;
-using Projeto02.GestaoForum.Models;
+using Projeto03.AcessoDados.Models;
 using System.Data.SqlClient;
 
 namespace Projeto02.GestaoForum.DataAccess

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Projeto02.GestaoForum.DataAccess;
-using Projeto02.GestaoForum.Models;
+using Projeto03.AcessoDados.Models;
 
 namespace Projeto02.GestaoForum.Controllers
 {

@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Projeto02.GestaoForum.Models;
-using System.Diagnostics;
 
 namespace Projeto02.GestaoForum.Controllers
 {
@@ -21,12 +19,6 @@ namespace Projeto02.GestaoForum.Controllers
         public IActionResult Privacy()
         {
             return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

@@ -1,14 +1,17 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Projeto02.GestaoForum.Models;
+using Projeto03.AcessoDados.DI;
 
 var builder = WebApplication.CreateBuilder(args);
 
 ConfigurationManager config = builder.Configuration;
 
 // Add services to the container.
-builder.Services.AddDbContext<ForumContext>(options => 
-    options.UseSqlServer(config.GetConnectionString("ForumConnection")));
+//builder.Services.AddDbContext<ForumContext>(options => 
+//    options.UseSqlServer(config.GetConnectionString("ForumConnection")));
+
+builder.Services.AddInfraStructureDb(config);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(config.GetConnectionString("IdentityConnection")));
@@ -28,7 +31,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Autenticacao/Login";
     options.LogoutPath = "/Autenticacao/Logout";
-    options.AccessDeniedPath = "Autenticacao/AcessDenied";
+    options.AccessDeniedPath = "/Autenticacao/AcessDenied";
 });
 
 builder.Services.AddControllersWithViews();
@@ -39,8 +42,8 @@ var app = builder.Build();
 var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
 
-var context = services.GetRequiredService<ForumContext>();
-DbInitializer.Initialize(context);
+//var context = services.GetRequiredService<ForumContext>();
+//DbInitializer.Initialize(context);
 
 // criando os perfis (roles)
 Utils.CreateRoles(services).Wait();

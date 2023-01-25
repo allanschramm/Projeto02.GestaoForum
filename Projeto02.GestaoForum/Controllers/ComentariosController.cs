@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Projeto02.GestaoForum.DAL;
-using Projeto02.GestaoForum.Models;
+using Projeto03.AcessoDados.DAL;
+using Projeto03.AcessoDados.Data;
+using Projeto03.AcessoDados.Models;
 
 namespace Projeto02.GestaoForum.Controllers
 {
