@@ -6,6 +6,7 @@ namespace Projeto02.GestaoForum.Models
     {
         public static async Task CreateRoles(IServiceProvider serviceProvider)
         {
+            //var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 

@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Listar Comentários - Ajax";
 }
 
@@ -6,17 +7,17 @@
 
 <form asp-action="ListarPorForumAjax" asp-controller="Comentarios" method="get">
     <div class="mb-3">
-        <label class="form-label">Selecione o Fórum</label>        
+        <label class="form-label">Selecione o Fórum</label>
         <select id="idForum" name="idForum" class="form-select"
-            asp-items="(SelectList)ViewBag.Foruns">
-            <option value="0">SELECIONE</option>
+                asp-items="(SelectList)ViewBag.Foruns">
+                <option value="0">SELECIONE</option>
         </select>
-    </div>   
+    </div>
 </form>
 
 <div class="mb-3" id="resultado"></div>
 
-@section Scripts 
+@section Scripts
 {
     <script>
         $(document).ready(function(){
@@ -24,10 +25,9 @@
                 let id = $(this).val();
 
                 if(id == 0){
-                    let erro = '<div class="alert alert-danger">Nenhum forum selecionado</div>'
+                    let erro = '<div class="alert alert-danger">Nenhum forum selecionado</div>';
                     $("#resultado").html(erro);
-                }
-                else {
+                } else {
                     $("#resultado").load("/Comentarios/ListarPorForumAjax?idForum=" + id);
                 }
             });

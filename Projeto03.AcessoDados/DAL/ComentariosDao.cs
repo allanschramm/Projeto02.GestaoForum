@@ -1,4 +1,6 @@
-﻿using Projeto03.AcessoDados.Data;
+﻿
+
+using Projeto03.AcessoDados.Data;
 using Projeto03.AcessoDados.Models;
 using Projeto03.AcessoDados.ViewModels;
 
@@ -30,11 +32,10 @@ namespace Projeto03.AcessoDados.DAL
 
             return lista.ToList();
         }
-
         //public IEnumerable<ForumComentariosVM> ListarComentariosPorForum(int idForum)
         //{
         //    var comentarios = this.ListarComentariosPorForum();
-        //    if(idForum> 0)
+        //    if(idForum > 0)
         //    {
         //        comentarios = comentarios.Where(p => p.ForumId == idForum);
         //    }

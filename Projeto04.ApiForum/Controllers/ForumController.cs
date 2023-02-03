@@ -4,17 +4,19 @@ using Projeto03.AcessoDados.DAL;
 using Projeto03.AcessoDados.Data;
 using Projeto03.AcessoDados.Models;
 
-namespace Projeto04.APIForum.Controllers
+namespace Projeto04.ApiForum.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class ForumController : ControllerBase
     {
         private readonly ForumDao forumDao;
+
         public ForumController(ForumContext context)
         {
             forumDao = new ForumDao(context);
         }
+
         [HttpGet]
         public IEnumerable<Forum> GetForums()
         {
@@ -46,7 +48,7 @@ namespace Projeto04.APIForum.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
-            }
+            }        
         }
     }
 }

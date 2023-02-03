@@ -13,6 +13,6 @@ namespace Projeto02.GestaoForum.Models
         public string? Senha { get; set; }
 
         [Display(Name = "Lembrar-me")]
-        public bool RememberMe { get; set;}
+        public bool RememberMe { get; set; }
     }
 }

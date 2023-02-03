@@ -65,7 +65,7 @@ namespace Projeto02.GestaoForum.Controllers
         public IActionResult ListarPorForumAjax(int idForum)
         {
             ViewBag.Foruns = new SelectList(forumDao.Listar(), "Id", "Descricao");
-            if (idForum == 0)
+            if(idForum == 0)
             {
                 return View();
             }

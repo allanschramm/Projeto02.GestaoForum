@@ -26,12 +26,12 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequireUppercase = false;
 });
 
-//personalizando o caminho do login, logout e acesso negado
+// personalizando o caminho do login, logout e acesso negado
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Autenticacao/Login";
     options.LogoutPath = "/Autenticacao/Logout";
-    options.AccessDeniedPath = "/Autenticacao/AcessDenied";
+    options.AccessDeniedPath = "/Autenticacao/AccessDenied";
 });
 
 builder.Services.AddControllersWithViews();

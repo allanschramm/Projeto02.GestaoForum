@@ -13,14 +13,14 @@ namespace Projeto03.AcessoDados.DI
     public static class DependencyInjection
     {
         public static IServiceCollection AddInfraStructureDb(
-            this IServiceCollection services,
+            this IServiceCollection services, 
             IConfiguration configuration)
         {
             var provider = services.AddDbContext<ForumContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("ForumConnection")))
                 .BuildServiceProvider();
 
-            var context = provider.GetService<ForumContext>();
+            var context = provider.GetRequiredService<ForumContext>();
             DbInitializer.Initialize(context);
 
             return services;

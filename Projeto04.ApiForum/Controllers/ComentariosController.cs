@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Projeto02.GestaoForum.DAL;
-using Projeto02.GestaoForum.Models;
-using Projeto02.GestaoForum.ViewModels;
+using Projeto03.AcessoDados.DAL;
+using Projeto03.AcessoDados.Data;
+using Projeto03.AcessoDados.Models;
+using Projeto03.AcessoDados.ViewModels;
 
 namespace Projeto04.ApiForum.Controllers
 {

@@ -5,6 +5,7 @@ using Projeto03.AcessoDados.Models;
 
 namespace Projeto02.GestaoForum.Controllers
 {
+
     public class ForumController : Controller
     {
         private Dao dao;
@@ -22,6 +23,7 @@ namespace Projeto02.GestaoForum.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public IActionResult ListarTodos()
         {
             return View(dao.ListarForuns());

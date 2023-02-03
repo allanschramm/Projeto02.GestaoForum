@@ -8,10 +8,14 @@ ConfigurationManager config = builder.Configuration;
 builder.Services.AddControllers();
 builder.Services.AddInfraStructureDb(config);
 
+builder.Services.AddCors(policy => 
+    policy.AddDefaultPolicy(p => 
+        p.WithOrigins("*").AllowAnyHeader().AllowAnyMethod()));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
+app.UseCors();
 app.UseAuthorization();
 
 app.MapControllers();

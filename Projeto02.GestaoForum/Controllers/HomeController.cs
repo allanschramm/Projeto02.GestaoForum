@@ -20,5 +20,6 @@ namespace Projeto02.GestaoForum.Controllers
         {
             return View();
         }
+
     }
 }

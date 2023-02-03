@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Projeto03.AcessoDados.Models
 {
+
     [Table("FORUM")]
     public class Forum
     {

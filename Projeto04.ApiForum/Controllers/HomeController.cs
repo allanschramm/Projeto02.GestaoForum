@@ -9,7 +9,7 @@ namespace Projeto04.ApiForum.Controllers
     public class HomeController : ControllerBase
     {
         [HttpGet]
-        public string Index()
+        public string Index() // HTTP GET
         {
             return "Asp.Net Core Web API";
         }

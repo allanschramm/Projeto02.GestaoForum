@@ -15,7 +15,7 @@ namespace Projeto02.GestaoForum.Models
         [DataType(DataType.Password)]
         [Display(Name = "Confirma Senha")]
         [Compare("Senha")]
-        public string ConfirmaSenha { get; set; }
+        public string? ConfirmaSenha { get; set; }
 
         public string? Perfil { get; set; }
     }

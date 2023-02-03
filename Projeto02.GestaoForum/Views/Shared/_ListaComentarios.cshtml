@@ -1,8 +1,5 @@
 ﻿@model IEnumerable<Projeto02.GestaoForum.ViewModels.ForumComentariosVM>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -21,6 +18,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.DataComentario)
             </th>
+
         </tr>
     </thead>
     <tbody>
@@ -41,6 +39,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DataComentario)
             </td>
+
         </tr>
 }
     </tbody>

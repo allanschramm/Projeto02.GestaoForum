@@ -11,7 +11,7 @@ namespace Projeto02.GestaoForum.Controllers
         private readonly SignInManager<IdentityUser> signInManager;
         private readonly RoleManager<IdentityRole> roleManager;
 
-        public AutenticacaoController(UserManager<IdentityUser> userManager,
+        public AutenticacaoController(UserManager<IdentityUser> userManager, 
                                       SignInManager<IdentityUser> signInManager,
                                       RoleManager<IdentityRole> roleManager)
         {
@@ -29,24 +29,24 @@ namespace Projeto02.GestaoForum.Controllers
         public IActionResult Registrar()
         {
             var roles = roleManager.Roles.ToList();
-            var listaRoles = roles.Select(r => r.Name).ToList();
+            var listaRoles = roles.Select(p => p.Name).ToList();
             ViewBag.Roles = new SelectList(listaRoles);
 
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Registrar(UsuarioViewModel model)
+        public async  Task<IActionResult> Registrar(UsuarioViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                // criando o usuario
+                // criando o usuário
                 var user = new IdentityUser
                 {
                     UserName = model.Email,
-                    Email= model.Email
+                    Email = model.Email
                 };
-                // incluir o usuario
+                // incluir o usuário
                 var result = await userManager.CreateAsync(user, model.Senha);
 
                 if (result.Succeeded)
@@ -66,13 +66,13 @@ namespace Projeto02.GestaoForum.Controllers
                 foreach(var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
-                }
+                }                
             }
             return View(model);
         }
 
         [HttpGet]
-        public IActionResult Login(string ? returnUrl = null)
+        public IActionResult Login(string? returnUrl = null)
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
@@ -84,9 +84,9 @@ namespace Projeto02.GestaoForum.Controllers
             if (ModelState.IsValid)
             {
                 var result = await signInManager.PasswordSignInAsync(
-                    model.Email,
-                    model.Senha,
-                    model.RememberMe,
+                    model.Email, 
+                    model.Senha, 
+                    isPersistent: model.RememberMe, 
                     lockoutOnFailure: false);
 
                 if (result.Succeeded)
@@ -96,20 +96,21 @@ namespace Projeto02.GestaoForum.Controllers
                 }
                 ModelState.AddModelError(string.Empty, "Usuário ou senha inválidos");
             }
-            return View(model);
+            return View(model);            
         }
 
         [HttpGet]
-        public async Task<IActionResult> Logout()
+        public  async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
 
-        public IActionResult AcessDenied()
+        public IActionResult AccessDenied()
         {
             var erro = "Você não tem permissão para acessar este recurso!!";
             return View("_Erro", new Exception(erro));
         }
+
     }
 }

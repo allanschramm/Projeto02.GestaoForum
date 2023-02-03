@@ -7,7 +7,6 @@
 
 <h1>Login</h1>
 
-<h4>LogonViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -25,7 +24,8 @@
             </div>
             <div class="mb-3 form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
+                    <input class="form-check-input" asp-for="RememberMe" /> 
+                    @Html.DisplayNameFor(model => model.RememberMe)
                 </label>
             </div>
             <div class="mb-3">
@@ -34,3 +34,5 @@
         </form>
     </div>
 </div>
+
+
